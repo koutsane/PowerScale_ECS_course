@@ -1,0 +1,31 @@
+-----------------------------------
+Isilon curl:
+-----------------------------------
+#### get auth token from Isilon ####
+curl -k -X POST -H "Content-Type: application/json" -c ./cookie -d @./auth https://192.168.21.231:8080/session/1/session
+
+
+#### use token to isilon users ####
+curl -k -X GET -H "X-CSRF-Token: `grep isicsrf ./cookie | awk '{print $(NF)}'`" --referer https://192.168.21.231:8080 -b @./cookie https://192.168.21.231:8080/platform/1/auth/users | jq
+
+
+#### logout token ####
+curl -k -X DELETE -H "X-CSRF-Token: `grep isicsrf ./cookie | awk '{print $(NF)}'`" --referer 	https://192.168.11.82:8080 -b @./cookie https://192.168.21.231:8080/session/1/session
+-----------------------------------
+
+
+
+-----------------------------------
+ECS curl:
+-----------------------------------
+#### get login token from ECS ####
+curl -k https://<YOUR ECS URL>:4443/login?using-cookies=true -u '<username>:<password>' -c cookiefile -v
+
+
+#### use token to list vpools / replication Group ####
+curl -k https://<YOUR ECS URL>:4443/vdc/data-service/vpools -H "Content-Type: application/json" -H "Accept:application/json" -b cookiefile | jq
+
+
+#### logout token ####
+curl -k https://<YOUR ECS URL>:4443/logout -H "Content-Type: application/json" -H "Accept:application/json" -b cookiefile
+

@@ -1,0 +1,19 @@
+---
+########### USE ECS MGMT API with ECS_TESTDRIVE ACCOUNT #############
+- name: ECS create new S3 bucket with management API
+  hosts: ecs_testdrive
+  gather_facts: False
+  vars:
+    username:
+    password:
+    ECS_host: 
+    NameSpace:
+    bucketOwner: 
+    BucketName:
+
+  tasks:
+
+  - name: Get ECS API authentication token
+    uri:
+
+

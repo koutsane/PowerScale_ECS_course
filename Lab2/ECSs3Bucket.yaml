@@ -1,0 +1,14 @@
+---
+########## REQUIRES PYTHON and BOTO3 #############
+- name: ECS Create S3 bucket
+  hosts: ecs_testdrive
+  gather_facts: False
+  vars:
+
+  tasks:
+
+    - name: Connect to ECS | Create S3 bucket
+      aws_s3:
+
+    - debug:
+

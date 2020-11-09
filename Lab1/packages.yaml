@@ -1,0 +1,9 @@
+---
+- name: "Install ftp and telnet packages"
+  hosts: 
+
+  tasks:
+
+    - name: Install package
+    
+

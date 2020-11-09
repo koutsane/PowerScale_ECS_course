@@ -1,0 +1,14 @@
+---
+- name: Create ECS object user and secret key with management API
+  hosts: 
+  gather_facts: False
+  vars:
+    username:
+    password:
+    ECS_host: 
+
+  tasks:
+
+  - name: Get ECS API authentication token
+    uri:
+
